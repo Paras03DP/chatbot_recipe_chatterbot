@@ -6,5 +6,5 @@ import pathlib
 trainer = ChatterBotCorpusTrainer(chatbot)
 
 trainer.train(
-    str(pathlib.Path().absolute())+'/english/',
+    str(pathlib.Path().absolute())+'/recipedataset/',
 )

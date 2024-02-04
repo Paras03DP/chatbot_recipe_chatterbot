@@ -1,6 +1,6 @@
 from chatterbot.logic import LogicAdapter
 
-class ProfanityAdapter(LogicAdapter):
+class Rendering(LogicAdapter):
 
     def __init__(self, chatbot, **kwargs):
         super().__init__(chatbot, **kwargs)

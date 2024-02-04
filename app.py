@@ -4,7 +4,7 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-botname='Normam'
+botname='RecipeBOT'
 chatbot = ChatBot(botname, 
 	#storage_adapter='chatterbot.storage.SQLStorageAdapter',
 	logic_adapters=[
@@ -22,11 +22,11 @@ chatbot = ChatBot(botname,
 
         },
         {
-            "import_path": "profanity_adapter.ProfanityAdapter",
+            "import_path": "rendering.Rendering",
 
         },
         {
-            "import_path": "covid19_adapter.Covid19Adapter",
+            "import_path": "recipe_bot.RecipeBOT",
 
         },
     ],

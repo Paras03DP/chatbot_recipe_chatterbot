@@ -1,7 +1,7 @@
 from chatterbot.logic import LogicAdapter
 from flask import Flask, render_template, request
 
-class Covid19Adapter(LogicAdapter):
+class RecipeBOT(LogicAdapter):
     def __init__(self, chatbot, **kwargs):
         ().__init__(chatbot, **kwargs)
 
