@@ -6,7 +6,7 @@ class RecipeBOT(LogicAdapter):
         ().__init__(chatbot, **kwargs)
 
     def can_process(self, statement):
-        words = ['covid', 'cases', 'today']
+        words = ['recipe', 'dishes', 'cusine']
         if all(x in statement.text.split() for x in words):
             return True
         else:
@@ -18,7 +18,7 @@ class RecipeBOT(LogicAdapter):
         from datetime import date, timedelta
         import json
 
-        provinces=['Ontario', 'Quebec', 'Manitoba', 'Newfoundland and Labrador','New Brunswick', 'British Columbia', 'Prince Edward Island', 'Saskatchewan', 'Yukon', 'Nova Scotia','Northwest Territories']
+        recipes=['Daalbhat', 'momo', 'chowmein', 'thukpa','Sandwitch', 'samosa', 'omlet', 'Chicken Curry', 'Egg Curry', 'Burger','Cheese Balls']
 
         today = date.today()
         days=2
@@ -29,10 +29,10 @@ class RecipeBOT(LogicAdapter):
         else:
             confidence = 0
 
-        if any(x in input_statement.text.split() for x in provinces):
+        if any(x in input_statement.text.split() for x in recipes):
 
             input_dict = json.loads(response.text)
-            output_dict = [y for y in input_dict if y['Province'] == list(set(input_statement.text.split()).intersection(provinces))[0]]
+            output_dict = [y for y in input_dict if y['Province'] == list(set(input_statement.text.split()).intersection(recipes))[0]]
             today_cases=output_dict[-1]['Cases']
             prev_cases=output_dict[-2]['Cases']
             response_statement = Statement(text='Change in cases: {}'.format(today_cases-prev_cases))

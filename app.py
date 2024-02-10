@@ -4,10 +4,10 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-botname='RecipeBOT'
-chatbot = ChatBot(botname, 
-	#storage_adapter='chatterbot.storage.SQLStorageAdapter',
-	logic_adapters=[
+botname = 'RecipeBOT'
+chatbot = ChatBot(
+    botname,
+    logic_adapters=[
         {
             'import_path': 'chatterbot.logic.BestMatch',
             'default_response': 'I am sorry, but I do not understand.',
@@ -15,22 +15,18 @@ chatbot = ChatBot(botname,
         },
         {
             "import_path": "chatterbot.logic.MathematicalEvaluation",
-
         },
         {
             "import_path": "chatterbot.logic.UnitConversion",
-
         },
         {
             "import_path": "rendering.Rendering",
-
         },
         {
             "import_path": "recipe_bot.RecipeBOT",
-
         },
     ],
- )
+)
 
 @app.route("/")
 def home():
@@ -38,8 +34,8 @@ def home():
 
 @app.route("/get")
 def get_bot_response():
-	userInput=request.args.get('msg')
-	return str(chatbot.get_response(userInput))
+    userInput = request.args.get('msg')
+    return str(chatbot.get_response(userInput))
 
 if __name__ == '__main__':
-	app.run(port=5500)
+    app.run(port=5500)
